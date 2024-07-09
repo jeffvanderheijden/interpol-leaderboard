@@ -1,13 +1,12 @@
 import React, { useRef, useEffect, useState } from "react";
 import Globe from "react-globe.gl";
-import data from "./data";
-import useInterval from "./../../helpers/hooks/useInterval";
-import { getGroups } from "./../../assets/data/dataLayer";
 import globeImage from "./../../assets/images/earth_bw.jpg";
 
-const GlobeComp = () => {
+const GlobeComp = ({
+    initialData
+}) => {
     const globeEl = useRef();
-    const [arcsData, setArcsData] = useState([]);
+    const [arcsData, setArcsData] = useState(initialData);
 
     useEffect(() => {
         globeEl.current.pointOfView({ lat: 46.7749, lng: 40.4194, altitude: 3 });
@@ -18,24 +17,9 @@ const GlobeComp = () => {
         globeEl.current.controls().enableZoom = false;
     }, [globeEl, arcsData]);
 
-    // Set initial arcs data based on amount of groups
     useEffect(() => {
-        async function fetchData() {
-            const groups = await getGroups();
-            setArcsData(data.slice(0, groups.length));
-        }
-        fetchData();
-    }, []);
-
-    // Update arcs data every minute
-    useInterval(
-        async () => {
-            const groups = await getGroups();
-            setArcsData(data.slice(0, groups.length));
-        }, 60000
-    );
-
-
+        setArcsData(initialData);
+    }, [initialData]);
 
     return (
         <div style={{ position: 'absolute', top: 0, left: 0, zIndex: 2, opacity: .8 }}>

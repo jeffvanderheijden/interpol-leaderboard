@@ -3,25 +3,14 @@ import React, { useEffect, useState } from "react"
 import { getGroups } from "./../../assets/data/dataLayer"
 import "./ConnectedBots.css"
 
-const ConnectedBots = () => {
-    const [connectedAmount, setConnectedAmount] = useState(0);
-    // Set initial arcs data based on amount of groups
-    useEffect(() => {
-        async function fetchData() {            
-            const groups = await getGroups();
-            console.log(groups);
-            setConnectedAmount(groups.length);
-        }
-        fetchData();
-    }, []);
+const ConnectedBots = ({
+    initialData
+}) => {
+    const [connectedAmount, setConnectedAmount] = useState(initialData);
 
-    // Update arcs data every minute
-    // useInterval(
-    //     async () => {
-    //         const groups = await getGroups();
-    //         setArcsData(data.slice(0, groups.length));
-    //     }, 60000
-    // );
+    useEffect(() => {
+        setConnectedAmount(initialData.length);
+    }, [initialData]);
 
     return (
         <div className="connectedBots">

@@ -1,5 +1,8 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import GlobeComp from "../components/Globe/GlobeComp"
+import data from "../components/Globe/data";
+import useInterval from "./../helpers/hooks/useInterval";
+import { getGroups } from "./../assets/data/dataLayer";
 import Polygon from "../components/Polygon/Polygon"
 import RingAnimation from "../components/RingAnimation/RingAnimation"
 import Leaderboard from "../components/Leaderboard/Leaderboard"
@@ -8,14 +11,36 @@ import NoSSR from "../components/NoSSR/NoSSR"
 import "./../assets/styles/Reset.css"
 
 const IndexPage = () => {
+  const [arcsData, setArcsData] = useState([]);
+  const [connectedAmount, setConnectedAmount] = useState(0);
+
+  // Set initial arcs data based on amount of groups, also set amount of groups
+  useEffect(() => {
+    async function fetchData() {
+        const groups = await getGroups();
+        setArcsData(data.slice(0, groups.length));
+        setConnectedAmount(groups.length);
+    }
+    fetchData();
+  }, []);
+
+   // Update arcs & groups amount data every minute
+   useInterval(
+      async () => {
+          const groups = await getGroups();
+          setArcsData(data.slice(0, groups.length));
+          setConnectedAmount(groups.length);
+      }, 60000
+  );
+
   return (
     <div style={{ width: "100vw", height: "100vh", backgroundColor: "#000" }}>
       <NoSSR>
         <Polygon />
-        <GlobeComp />
+        <GlobeComp arcsData={arcsData} />
         <RingAnimation /> 
         <Leaderboard /> 
-        <ConnectedBots /> 
+        <ConnectedBots connectedAmount={connectedAmount} /> 
         {/* amount of botnets equal to amount of student teams. */}
         {/* everytime a team completes all tasks, one botnot goes offline */}
         {/* when all botnets are offline, the hacker is revealed. */}
