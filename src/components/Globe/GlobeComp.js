@@ -13,7 +13,7 @@ const GlobeComp = () => {
         globeEl.current.pointOfView({ lat: 46.7749, lng: 40.4194, altitude: 3 });
         // Auto-rotate
         globeEl.current.controls().autoRotate = true;
-        globeEl.current.controls().autoRotateSpeed = 0.8;
+        globeEl.current.controls().autoRotateSpeed = 1;
         // Disable zoom
         globeEl.current.controls().enableZoom = false;
     }, [globeEl, arcsData]);
@@ -32,7 +32,7 @@ const GlobeComp = () => {
         async () => {
             const groups = await getGroups();
             setArcsData(data.slice(0, groups.length));
-        }, 60000
+        }, 70000
     );
 
 
