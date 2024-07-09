@@ -1,8 +1,18 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Crown from "./../../assets/images/crown.svg";
+import { getTopThreeGroups } from "./../../assets/data/dataLayer";
 import "./Leaderboard.css"
 
 const Leaderboard = () => {
+   
+    useEffect(() => {
+        async function fetchData() {
+            const groups = await getTopThreeGroups();
+            console.log(groups);
+        }
+        fetchData();
+    }, []);
+
     return (
         <div className="leaderBoard">
             <div className="leaderStage">
