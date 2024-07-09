@@ -4,13 +4,13 @@ import { getGroups } from "./../../assets/data/dataLayer"
 import "./ConnectedBots.css"
 
 const ConnectedBots = ({
-    initialData
+    initialConnectedAmount
 }) => {
-    const [connectedAmount, setConnectedAmount] = useState(initialData);
+    const [connectedAmount, setConnectedAmount] = useState(initialConnectedAmount);
 
     useEffect(() => {
-        setConnectedAmount(initialData && initialData.length > 0 ? initialData.length : 0);
-    }, [initialData]);
+        setConnectedAmount(connectedAmount);
+    }, [connectedAmount]);
 
     return (
         <div className="connectedBots">

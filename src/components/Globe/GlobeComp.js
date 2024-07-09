@@ -3,10 +3,10 @@ import Globe from "react-globe.gl";
 import globeImage from "./../../assets/images/earth_bw.jpg";
 
 const GlobeComp = ({
-    initialData
+    initialArcsData
 }) => {
     const globeEl = useRef();
-    const [arcsData, setArcsData] = useState(initialData);
+    const [arcsData, setArcsData] = useState(initialArcsData);
 
     useEffect(() => {
         globeEl.current.pointOfView({ lat: 46.7749, lng: 40.4194, altitude: 3 });
@@ -18,8 +18,8 @@ const GlobeComp = ({
     }, [globeEl, arcsData]);
 
     useEffect(() => {
-        setArcsData(initialData);
-    }, [initialData]);
+        setArcsData(arcsData);
+    }, [arcsData]);
 
     return (
         <div style={{ position: 'absolute', top: 0, left: 0, zIndex: 2, opacity: .8 }}>

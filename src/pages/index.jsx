@@ -40,10 +40,10 @@ const IndexPage = () => {
     <div style={{ width: "100vw", height: "100vh", backgroundColor: "#000" }}>
       <NoSSR>
         <Polygon />
-        <GlobeComp arcsData={arcsData} />
+        <GlobeComp initialArcsData={arcsData} />
         <RingAnimation /> 
         <Leaderboard /> 
-        <ConnectedBots connectedAmount={connectedAmount > 0 ? connectedAmount : 0} /> 
+        <ConnectedBots initialConnectedAmount={connectedAmount} /> 
         {/* amount of botnets equal to amount of student teams. */}
         {/* everytime a team completes all tasks, one botnot goes offline */}
         {/* when all botnets are offline, the hacker is revealed. */}
