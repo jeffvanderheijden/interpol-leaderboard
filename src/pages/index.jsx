@@ -18,8 +18,8 @@ const IndexPage = () => {
   useEffect(() => {
     async function fetchData() {
         const groups = await getGroups();
-        setArcsData(data.slice(0, groups.length));
-        setConnectedAmount(groups.length);
+        setArcsData(data.slice(0, groups.length ? groups.length : 0));
+        setConnectedAmount(groups.length ? groups.length : 0);
     }
     fetchData();
   }, []);
@@ -28,8 +28,8 @@ const IndexPage = () => {
    useInterval(
       async () => {
           const groups = await getGroups();
-          setArcsData(data.slice(0, groups.length));
-          setConnectedAmount(groups.length);
+          setArcsData(data.slice(0, groups.length ? groups.length : 0));
+          setConnectedAmount(groups.length ? groups.length : 0);
       }, 60000
   );
 
