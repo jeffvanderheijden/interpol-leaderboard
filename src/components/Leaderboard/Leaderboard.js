@@ -7,25 +7,13 @@ const Leaderboard = () => {
    
     useEffect(() => {
         async function fetchData() {
-            try {
-                const groups = await getTopThreeGroups();
-                console.log(groups);
-        
-                const groupPromises = groups.map(group => 
-                    getGroupById(group.groupId).then(groupData => {
-                        console.log(groupData);
-                        return groupData; // Return groupData to use it later if needed
-                    }).catch(error => {
-                        console.error(`Error fetching group ${group.groupId}:`, error);
-                    })
-                );
-        
-                // Wait for all groupPromises to resolve
-                const groupDataArray = await Promise.all(groupPromises);
-                console.log(groupDataArray); // This will log an array of groupData
-            } catch (error) {
-                console.error('Error fetching top three groups:', error);
-            }
+            const groups = await getTopThreeGroups();
+            console.log(groups);
+            // groups.map((group) => {
+            //     getGroupById(group.groupId).then((groupData) => {
+            //         console.log(groupData);
+            //     });
+            // });
         }
         fetchData();
     }, []);
