@@ -16,18 +16,16 @@ const IndexPage = () => {
 
   // Set initial arcs data based on amount of groups, also set amount of groups
   useEffect(() => {
-    console.log('useEffect test')
     async function fetchData() {
-        console.log("fetching data")
         const groups = await getGroups();
-        console.log(groups);
         setArcsData(data.slice(0, groups.length ? groups.length : 0));
         setConnectedAmount(groups.length ? groups.length : 0);
     }
     fetchData();
   }, []);
 
-   // Update arcs & groups amount data every minute
+   // Update arcs & groups amount data every minute 
+   // This corresponds EXACTLY with one rotation of the globe so don't change!
    useInterval(
       async () => {
           const groups = await getGroups();
@@ -44,9 +42,6 @@ const IndexPage = () => {
         <RingAnimation /> 
         <Leaderboard /> 
         <ConnectedBots initialConnectedAmount={connectedAmount} /> 
-        {/* amount of botnets equal to amount of student teams. */}
-        {/* everytime a team completes all tasks, one botnot goes offline */}
-        {/* when all botnets are offline, the hacker is revealed. */}
       </NoSSR>
     </div>
   )
