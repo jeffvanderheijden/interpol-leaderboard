@@ -27,7 +27,7 @@ const GlobeComp = () => {
         fetchData();
     }, []);
 
-    // Update arcs data every 10 seconds
+    // Update arcs data every minute
     useInterval(
         async () => {
             const groups = await getGroups();
