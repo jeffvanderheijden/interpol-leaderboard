@@ -9,8 +9,8 @@ const ConnectedBots = ({
     const [connectedAmount, setConnectedAmount] = useState(initialConnectedAmount);
 
     useEffect(() => {
-        setConnectedAmount(connectedAmount);
-    }, [connectedAmount]);
+        setConnectedAmount(initialConnectedAmount);
+    }, [initialConnectedAmount]);
 
     return (
         <div className="connectedBots">

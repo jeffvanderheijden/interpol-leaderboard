@@ -18,8 +18,8 @@ const GlobeComp = ({
     }, [globeEl, arcsData]);
 
     useEffect(() => {
-        setArcsData(arcsData);
-    }, [arcsData]);
+        setArcsData(initialConnectedAmount);
+    }, [initialArcsData]);
 
     return (
         <div style={{ position: 'absolute', top: 0, left: 0, zIndex: 2, opacity: .8 }}>
