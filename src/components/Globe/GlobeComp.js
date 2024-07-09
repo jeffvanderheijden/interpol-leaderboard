@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Globe from "react-globe.gl";
 import data from "./data";
 import { getGroups } from "./../../assets/data/dataLayer";
@@ -6,6 +6,7 @@ import globeImage from "./../../assets/images/earth_bw.jpg";
 
 const GlobeComp = () => {
     const globeEl = useRef();
+    const [arcsData, setArcsData] = useState(null);
 
     useEffect(() => {
         globeEl.current.pointOfView({ lat: 46.7749, lng: 40.4194, altitude: 3 });
@@ -19,13 +20,7 @@ const GlobeComp = () => {
     // Get amount of teams, grab only that many arcsPoints
     useEffect(async () => {
         const groups = await getGroups();
-        console.log(groups);
-        // const teams = groups.filter(group => group.groupType === "team");
-        // const arcsData = data.slice(0, teams.length);
-        // arcsData.forEach((arc, i) => {
-        //     arc.color = i % 2 === 0 ? "red" : "blue";
-        //     arc.stroke = 0.1 + Math.random() * 0.9;
-        // });
+        setArcsData(data.slice(0, groups.length));
     }, []);
     // Use a custom interval hook to get teams amount every x seconds
     
@@ -39,7 +34,7 @@ const GlobeComp = () => {
                 globeImageUrl={globeImage}
                 atmosphereColor={"#ADFF2F"}
                 backgroundColor={"rgba(0,0,0,0)"}
-                arcsData={data}
+                arcsData={arcsData}
                 arcColor={"color"}
                 arcDashGap={(d) => 1 - (d.stroke - 0.1)}
                 arcDashAnimateTime={(d) => 5000}
