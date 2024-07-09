@@ -18,6 +18,7 @@ const IndexPage = () => {
   useEffect(() => {
     async function fetchData() {
         const groups = await getGroups();
+        console.log(groups);
         setArcsData(data.slice(0, groups.length ? groups.length : 0));
         setConnectedAmount(groups.length ? groups.length : 0);
     }
