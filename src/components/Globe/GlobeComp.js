@@ -15,7 +15,7 @@ const GlobeComp = () => {
         globeEl.current.controls().autoRotateSpeed = 0.6;
         // Disable zoom
         globeEl.current.controls().enableZoom = false;
-    }, [globeEl]);
+    }, [globeEl, arcsData]);
 
     // Get amount of teams, grab only that many arcsPoints
     useEffect(async () => {
