@@ -40,7 +40,7 @@ const IndexPage = () => {
         <GlobeComp arcsData={arcsData} />
         <RingAnimation /> 
         <Leaderboard /> 
-        <ConnectedBots connectedAmount={connectedAmount} /> 
+        <ConnectedBots connectedAmount={connectedAmount > 0 ? connectedAmount : 0} /> 
         {/* amount of botnets equal to amount of student teams. */}
         {/* everytime a team completes all tasks, one botnot goes offline */}
         {/* when all botnets are offline, the hacker is revealed. */}
