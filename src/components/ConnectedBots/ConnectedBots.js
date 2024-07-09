@@ -1,7 +1,10 @@
-import React from "react"
+import React, { useEffect } from "react"
 import "./ConnectedBots.css"
 
 const ConnectedBots = () => {
+    useEffect(() => {
+
+    }, []);
     return (
         <div className="connectedBots">
             <h1>BotNet</h1>

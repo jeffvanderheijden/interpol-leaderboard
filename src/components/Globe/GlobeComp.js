@@ -17,14 +17,14 @@ const GlobeComp = () => {
         globeEl.current.controls().enableZoom = false;
     }, [globeEl, arcsData]);
 
-    // Get amount of teams, grab only that many arcsPoints
-    useEffect(async () => {
-        const groups = await getGroups();
-        setArcsData(data.slice(0, groups.length));
-    }, []);
-    // Use a custom interval hook to get teams amount every x seconds
-    
-    // const arcsData = arcsData.slice(0, teams.length);
+    // TODDOOODODODODODO Use a custom interval hook to get teams amount every x seconds
+    useInterval(
+        async () => {
+            setSpeed(Math.floor(Math.random() * 3000));
+            const groups = await getGroups();
+            setArcsData(data.slice(0, groups.length));
+        }, 2000
+    );
 
     return (
         <div style={{ position: 'absolute', top: 0, left: 0, zIndex: 2, opacity: .8 }}>
