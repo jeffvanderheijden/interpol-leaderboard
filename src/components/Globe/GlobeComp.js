@@ -32,7 +32,7 @@ const GlobeComp = () => {
         async () => {
             const groups = await getGroups();
             setArcsData(data.slice(0, groups.length));
-        }, 20000
+        }, 60000
     );
 
 
