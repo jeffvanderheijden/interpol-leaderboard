@@ -16,7 +16,7 @@ const IndexPage = () => {
 
   // Set initial arcs data based on amount of groups, also set amount of groups
   useEffect(() => {
-    console.log('useEffect')
+    console.log('useEffect test')
     async function fetchData() {
         console.log("fetching data")
         const groups = await getGroups();
