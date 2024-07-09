@@ -3,6 +3,7 @@ import Globe from "react-globe.gl";
 import data from "./data";
 import { getGroups } from "./../../assets/data/dataLayer";
 import globeImage from "./../../assets/images/earth_bw.jpg";
+import useInterval from "./../../helpers/hooks/useInterval";
 
 const GlobeComp = () => {
     const globeEl = useRef();
