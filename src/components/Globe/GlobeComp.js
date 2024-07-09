@@ -1,9 +1,9 @@
 import React, { useRef, useEffect, useState } from "react";
 import Globe from "react-globe.gl";
 import data from "./data";
+import useInterval from "./../../helpers/hooks/useInterval";
 import { getGroups } from "./../../assets/data/dataLayer";
 import globeImage from "./../../assets/images/earth_bw.jpg";
-import useInterval from "./../../helpers/hooks/useInterval";
 
 const GlobeComp = () => {
     const globeEl = useRef();
@@ -18,14 +18,24 @@ const GlobeComp = () => {
         globeEl.current.controls().enableZoom = false;
     }, [globeEl, arcsData]);
 
-    // TODDOOODODODODODO Use a custom interval hook to get teams amount every x seconds
-    useInterval(
-        async () => {
-            setSpeed(Math.floor(Math.random() * 3000));
+    // Set initial arcs data based on amount of groups
+    useEffect(() => {
+        async function fetchData() {
             const groups = await getGroups();
             setArcsData(data.slice(0, groups.length));
-        }, 2000
+        }
+        fetchData();
+    }, []);
+
+    // Update arcs data every 10 seconds
+    useInterval(
+        async () => {
+            const groups = await getGroups();
+            setArcsData(data.slice(0, groups.length));
+        }, 10000
     );
+
+
 
     return (
         <div style={{ position: 'absolute', top: 0, left: 0, zIndex: 2, opacity: .8 }}>
