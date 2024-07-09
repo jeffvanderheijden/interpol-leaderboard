@@ -6,7 +6,7 @@ import globeImage from "./../../assets/images/earth_bw.jpg";
 
 const GlobeComp = () => {
     const globeEl = useRef();
-    const [arcsData, setArcsData] = useState(null);
+    const [arcsData, setArcsData] = useState([]);
 
     useEffect(() => {
         globeEl.current.pointOfView({ lat: 46.7749, lng: 40.4194, altitude: 3 });
