@@ -9,7 +9,7 @@ const ConnectedBots = ({
     const [connectedAmount, setConnectedAmount] = useState(initialData);
 
     useEffect(() => {
-        setConnectedAmount(initialData.length);
+        setConnectedAmount(initialData.length > 0 ? initialData.length : 0);
     }, [initialData]);
 
     return (
