@@ -9,6 +9,11 @@ const Leaderboard = () => {
         async function fetchData() {
             const groups = await getTopThreeGroups();
             console.log(groups);
+            groups.map((group) => {
+                getGroupById(group.groupId).then((groupData) => {
+                    console.log(groupData);
+                });
+            });
         }
         fetchData();
     }, []);

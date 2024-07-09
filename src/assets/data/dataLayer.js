@@ -17,3 +17,13 @@ export const getTopThreeGroups = async () => {
         return [];
     }
 }
+
+const getGroupById = async (groupId) => {
+    try {
+        const response = await fetch(`https://api.interpol.sd-lab.nl/api/group?id=${groupId}`);
+        return await response.json();
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+};
