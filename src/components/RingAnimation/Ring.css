@@ -1,0 +1,45 @@
+.animatedRingContainer {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.animatedRing {
+    position: absolute;
+    width: 50vw;
+    opacity: 0.5;
+    /* transform-box: fill-box; 
+    transform-origin: center center; 
+    transform: rotate(0deg) translate(-50%, -50%); */
+    height: auto;
+    animation: rotate 60s infinite;
+}
+
+.animatedRing img {
+    width: 100%;
+    height: auto;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    12% {
+        transform: rotate(60deg) scale(0.93);
+    }
+    30% {
+        transform: rotate(80deg) scale(1);
+    }
+    50% {
+        transform: rotate(40deg) scale(0.9);
+    }
+    67% {
+        transform: rotate(20deg) scale(0.89);
+    }
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+}
