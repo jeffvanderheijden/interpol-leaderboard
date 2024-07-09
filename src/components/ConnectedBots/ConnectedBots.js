@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react"
+// import useInterval from "./../../helpers/hooks/useInterval"
+import { getGroups } from "./../../assets/data/dataLayer"
 import "./ConnectedBots.css"
 
 const ConnectedBots = () => {
