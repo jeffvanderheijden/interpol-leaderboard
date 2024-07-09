@@ -18,7 +18,7 @@ const GlobeComp = ({
     }, [globeEl, arcsData]);
 
     useEffect(() => {
-        setArcsData(initialConnectedAmount);
+        setArcsData(initialArcsData);
     }, [initialArcsData]);
 
     return (
