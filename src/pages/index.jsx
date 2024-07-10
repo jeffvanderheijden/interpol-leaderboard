@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import GlobeComp from "../components/Globe/GlobeComp"
 import data from "../components/Globe/data";
 import useInterval from "./../helpers/hooks/useInterval";
-import { getGroups } from "./../assets/data/dataLayer";
+import { getGroups, getTopThreeGroups } from "./../assets/data/dataLayer";
 import Polygon from "../components/Polygon/Polygon"
 import RingAnimation from "../components/RingAnimation/RingAnimation"
 import Leaderboard from "../components/Leaderboard/Leaderboard"
@@ -17,21 +17,36 @@ const IndexPage = () => {
   // Set initial arcs data based on amount of groups, also set amount of groups
   useEffect(() => {
     async function fetchData() {
-        const groups = await getGroups();
-        setArcsData(data.slice(0, groups.length ? groups.length : 0));
-        setConnectedAmount(groups.length ? groups.length : 0);
+      const groups = await getGroups();
+      setArcsData(data.slice(0, groups.length ? groups.length : 0));
+      setConnectedAmount(groups.length ? groups.length : 0);
     }
     fetchData();
   }, []);
 
-   // Update arcs & groups amount data every minute 
-   // This corresponds EXACTLY with one rotation of the globe so don't change!
-   useInterval(
-      async () => {
-          const groups = await getGroups();
-          setArcsData(data.slice(0, groups.length ? groups.length : 0));
-          setConnectedAmount(groups.length ? groups.length : 0);
-      }, 60000
+  // Get the top three groups by points
+  useEffect(() => {
+    async function fetchData() {
+      const groups = await getTopThreeGroups();
+      console.log(groups);
+      groups.map((group) => {
+        console.log(group);
+        // getGroupById(group.group_id).then((groupData) => {
+        //     console.log(groupData);
+        // });
+      });
+    }
+    fetchData();
+  }, []);
+
+  // Update arcs & groups amount data every minute 
+  // This corresponds EXACTLY with one rotation of the globe so don't change!
+  useInterval(
+    async () => {
+      const groups = await getGroups();
+      setArcsData(data.slice(0, groups.length ? groups.length : 0));
+      setConnectedAmount(groups.length ? groups.length : 0);
+    }, 60000
   );
 
   return (
@@ -39,9 +54,9 @@ const IndexPage = () => {
       <NoSSR>
         <Polygon />
         <GlobeComp initialArcsData={arcsData} />
-        <RingAnimation /> 
-        <Leaderboard /> 
-        <ConnectedBots initialConnectedAmount={connectedAmount} /> 
+        <RingAnimation />
+        <Leaderboard />
+        <ConnectedBots initialConnectedAmount={connectedAmount} />
       </NoSSR>
     </div>
   )

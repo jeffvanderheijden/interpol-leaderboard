@@ -1,23 +1,8 @@
-import React, { useEffect } from "react"
+import React from "react"
 import Crown from "./../../assets/images/crown.svg";
-import { getTopThreeGroups, getGroupById } from "./../../assets/data/dataLayer";
 import "./Leaderboard.css"
 
 const Leaderboard = () => {
-   
-    useEffect(() => {
-        async function fetchData() {
-            const groups = await getTopThreeGroups();
-            console.log(groups);
-            groups.map((group) => {
-                console.log(group);
-                // getGroupById(group.group_id).then((groupData) => {
-                //     console.log(groupData);
-                // });
-            });
-        }
-        fetchData();
-    }, []);
 
     return (
         <div className="leaderBoard">
