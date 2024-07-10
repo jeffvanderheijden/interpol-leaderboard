@@ -27,17 +27,19 @@ const IndexPage = () => {
 
   // Get the top three groups by points
   useEffect(() => {
+    let combinedGroupsData = [];
     async function fetchData() {
       const groups = await getTopThreeGroups();
       groups.map((group) => {
-        return getGroupById(group.group_id).then((groupData) => {  
-          return {
+        getGroupById(group.group_id).then((groupData) => {  
+          const groupWithPoints = {
             ...groupData,
             points: group.total_points
           }
+          combinedGroupsData.push(groupWithPoints);
         });
       });
-      setTopThreeGroups(groups);
+      setTopThreeGroups(combinedGroupsData);
     }
     fetchData();
   }, []);
