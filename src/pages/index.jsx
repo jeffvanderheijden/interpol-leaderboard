@@ -59,7 +59,7 @@ const IndexPage = () => {
         <Polygon />
         <GlobeComp initialArcsData={arcsData} />
         <RingAnimation />
-        <Leaderboard />
+        <Leaderboard topThreeGroups={topThreeGroups} />
         <ConnectedBots initialConnectedAmount={connectedAmount} />
       </NoSSR>
     </div>
