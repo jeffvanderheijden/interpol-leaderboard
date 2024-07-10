@@ -30,7 +30,9 @@ const Leaderboard = ({
                 {lowestPoints && (
                     <div className="podium third">
                         <div className="avatar">
-                            <img src={`https://api.interpol.sd-lab.nl/${lowestPoints.image_url}`} alt="third" />
+                            <div className="imgWrapper">
+                                <img src={`https://api.interpol.sd-lab.nl/${lowestPoints.image_url}`} alt="third" />
+                            </div>
                             <span>3</span>
                         </div>
                         <h1 className="teamName">{lowestPoints.name}</h1>
@@ -42,7 +44,9 @@ const Leaderboard = ({
                     <div className="podium first">
                         <div className="avatar">
                             <img className="crown" src={Crown} alt={'Leader'} />
-                            <img src={`https://api.interpol.sd-lab.nl/${highestPoints.image_url}`} alt="first" />
+                            <div className="imgWrapper">
+                                <img src={`https://api.interpol.sd-lab.nl/${highestPoints.image_url}`} alt="first" />
+                            </div>                            
                             <span>1</span>
                         </div>
                         <h1 className="teamName">{highestPoints.name}</h1>
@@ -53,7 +57,9 @@ const Leaderboard = ({
                 {secondHighestPoints && (
                     <div className="podium second">
                         <div className="avatar">
-                            <img src={`https://api.interpol.sd-lab.nl/${secondHighestPoints.image_url}`} alt="second" />
+                            <div className="imgWrapper">
+                                <img src={`https://api.interpol.sd-lab.nl/${secondHighestPoints.image_url}`} alt="second" />
+                            </div>
                             <span>2</span>
                         </div>
                         <h1 className="teamName">{secondHighestPoints.name}</h1>

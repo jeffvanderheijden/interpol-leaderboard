@@ -46,6 +46,21 @@
     width: 190px;
 }
 
+.leaderStage .podium .imgWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    border-radius: 9999px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.leaderStage .podium .imgWrapper img {
+    width: 100%;
+    height: auto;
+}
+
 .leaderStage .teamName,
 .leaderStage .score {
     font-size: 24px;
