@@ -10,6 +10,8 @@ const Leaderboard = ({
     const [lowestPoints, setLowestPoints] = useState({});
 
     useEffect(() => {
+        console.log(topThreeGroups);
+        console.log(topThreeGroups.length);
         if (topThreeGroups.length > 0) {
             // Sort the array based on the points in descending order
             const sortedData = topThreeGroups.slice().sort((a, b) => parseInt(b.points) - parseInt(a.points));
