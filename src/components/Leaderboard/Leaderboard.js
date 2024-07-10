@@ -1,8 +1,14 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Crown from "./../../assets/images/crown.svg";
 import "./Leaderboard.css"
 
-const Leaderboard = () => {
+const Leaderboard = ({
+    topThreeGroups
+}) => {
+
+    useEffect(() => {
+        console.log(topThreeGroups);
+    }, [topThreeGroups]);
 
     return (
         <div className="leaderBoard">

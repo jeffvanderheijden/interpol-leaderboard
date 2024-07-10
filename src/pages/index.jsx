@@ -13,6 +13,7 @@ import "./../assets/styles/Reset.css"
 const IndexPage = () => {
   const [arcsData, setArcsData] = useState([]);
   const [connectedAmount, setConnectedAmount] = useState(0);
+  const [topThreeGroups, setTopThreeGroups] = useState([]);
 
   // Set initial arcs data based on amount of groups, also set amount of groups
   useEffect(() => {
@@ -28,17 +29,16 @@ const IndexPage = () => {
   useEffect(() => {
     async function fetchData() {
       const groups = await getTopThreeGroups();
-      console.log(groups);
       groups.map((group) => {
-        console.log(group);
         getGroupById(group.group_id).then((groupData) => {  
           const groupWithPoints = {
             ...groupData,
-            points: group.points
+            points: group.total_points
           }
-          console.log(groupWithPoints);
+          return groupWithPoints;
         });
       });
+      setTopThreeGroups(groups);
     }
     fetchData();
   }, []);
