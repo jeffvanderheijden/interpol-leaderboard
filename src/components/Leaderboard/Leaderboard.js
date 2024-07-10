@@ -27,7 +27,7 @@ const Leaderboard = ({
     return (
         <div className="leaderBoard">
             <div className="leaderStage">
-                {lowestPoints && (
+                {Object.keys(lowestPoints).length && (
                     <div className="podium third">
                         <div className="avatar">
                             <div className="imgWrapper">
@@ -40,7 +40,7 @@ const Leaderboard = ({
                         <h1 className="score">{lowestPoints.points}</h1>
                     </div>
                 )}
-                {highestPoints && (
+                {Object.keys(highestPoints).length && (
                     <div className="podium first">
                         <div className="avatar">
                             <img className="crown" src={Crown} alt={'Leader'} />
@@ -54,7 +54,7 @@ const Leaderboard = ({
                         <h1 className="score">{highestPoints.points}</h1>
                     </div>
                 )}
-                {secondHighestPoints && (
+                {Object.keys(secondHighestPoints).length && (
                     <div className="podium second">
                         <div className="avatar">
                             <div className="imgWrapper">
