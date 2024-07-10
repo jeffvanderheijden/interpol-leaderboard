@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import GlobeComp from "../components/Globe/GlobeComp"
 import data from "../components/Globe/data";
 import useInterval from "./../helpers/hooks/useInterval";
-import { getGroups, getTopThreeGroups } from "./../assets/data/dataLayer";
+import { getGroups, getTopThreeGroups, getGroupById } from "./../assets/data/dataLayer";
 import Polygon from "../components/Polygon/Polygon"
 import RingAnimation from "../components/RingAnimation/RingAnimation"
 import Leaderboard from "../components/Leaderboard/Leaderboard"
@@ -31,9 +31,9 @@ const IndexPage = () => {
       console.log(groups);
       groups.map((group) => {
         console.log(group);
-        // getGroupById(group.group_id).then((groupData) => {
-        //     console.log(groupData);
-        // });
+        getGroupById(group.group_id).then((groupData) => {  
+          console.log(groupData);
+        });
       });
     }
     fetchData();
