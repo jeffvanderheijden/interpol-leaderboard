@@ -32,7 +32,11 @@ const IndexPage = () => {
       groups.map((group) => {
         console.log(group);
         getGroupById(group.group_id).then((groupData) => {  
-          console.log(groupData);
+          const groupWithPoints = {
+            ...groupData,
+            points: group.points
+          }
+          console.log(groupWithPoints);
         });
       });
     }
