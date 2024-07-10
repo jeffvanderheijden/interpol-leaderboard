@@ -10,9 +10,10 @@ const Leaderboard = () => {
             const groups = await getTopThreeGroups();
             console.log(groups);
             groups.map((group) => {
-                getGroupById(group.group_id).then((groupData) => {
-                    console.log(groupData);
-                });
+                console.log(group);
+                // getGroupById(group.group_id).then((groupData) => {
+                //     console.log(groupData);
+                // });
             });
         }
         fetchData();
