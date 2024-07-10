@@ -18,7 +18,7 @@ export const getTopThreeGroups = async () => {
     }
 }
 
-const getGroupById = async (groupId) => {
+export const getGroupById = async (groupId) => {
     try {
         const response = await fetch(`https://api.interpol.sd-lab.nl/api/group?id=${groupId}`);
         return await response.json();

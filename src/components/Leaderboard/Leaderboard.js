@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import Crown from "./../../assets/images/crown.svg";
-import { getTopThreeGroups } from "./../../assets/data/dataLayer";
+import { getTopThreeGroups, getGroupById } from "./../../assets/data/dataLayer";
 import "./Leaderboard.css"
 
 const Leaderboard = () => {
@@ -9,11 +9,11 @@ const Leaderboard = () => {
         async function fetchData() {
             const groups = await getTopThreeGroups();
             console.log(groups);
-            // groups.map((group) => {
-            //     getGroupById(group.groupId).then((groupData) => {
-            //         console.log(groupData);
-            //     });
-            // });
+            groups.map((group) => {
+                getGroupById(group.groupId).then((groupData) => {
+                    console.log(groupData);
+                });
+            });
         }
         fetchData();
     }, []);
