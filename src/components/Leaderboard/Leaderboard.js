@@ -12,11 +12,24 @@ const Leaderboard = ({
     useEffect(() => {
         if (topThreeGroups.length > 0) {
             // Sort the array based on the points in descending order
-            const sortedData = topThreeGroups.slice().sort((a, b) => parseInt(b.points) - parseInt(a.points));
+            let highestPoints = {};
+            let secondHighestPoints = {};
+            let lowestPoints = {};
+            
+            if (topThreeGroups.length === 1) {
+                highestPoints = topThreeGroups[0];
+            }  else if (topThreeGroups.length === 2) {
+                const sortedData = topThreeGroups.slice().sort((a, b) => parseInt(b.points) - parseInt(a.points));
 
-            const highestPoints = sortedData[0];
-            const secondHighestPoints = sortedData[1];
-            const lowestPoints = sortedData[sortedData.length - 1];
+                highestPoints = sortedData[0];
+                secondHighestPoints = sortedData[1];
+            } else {
+                const sortedData = topThreeGroups.slice().sort((a, b) => parseInt(b.points) - parseInt(a.points));
+
+                highestPoints = sortedData[0];
+                secondHighestPoints = sortedData[1];
+                lowestPoints = sortedData[sortedData.length - 1];
+            }
 
             setHighestPoints(highestPoints);
             setSecondHighestPoints(secondHighestPoints);
