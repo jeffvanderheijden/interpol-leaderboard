@@ -10,8 +10,6 @@ const Leaderboard = ({
     const [lowestPoints, setLowestPoints] = useState({});
 
     useEffect(() => {
-        console.log(topThreeGroups);
-        console.log(topThreeGroups.length);
         if (topThreeGroups.length > 0) {
             // Sort the array based on the points in descending order
             const sortedData = topThreeGroups.slice().sort((a, b) => parseInt(b.points) - parseInt(a.points));
@@ -23,8 +21,6 @@ const Leaderboard = ({
             setHighestPoints(highestPoints);
             setSecondHighestPoints(secondHighestPoints);
             setLowestPoints(lowestPoints);
-
-            console.log(highestPoints, secondHighestPoints, lowestPoints);
         }
     }, [topThreeGroups]);
 
@@ -34,6 +30,7 @@ const Leaderboard = ({
                 {lowestPoints && (
                     <div className="podium third">
                         <div className="avatar">
+                            <img src={`https://api.interpol.sd-lab.nl/${lowestPoints.image_url}`} alt="third" />
                             <span>3</span>
                         </div>
                         <h1 className="teamName">{lowestPoints.name}</h1>
@@ -45,6 +42,7 @@ const Leaderboard = ({
                     <div className="podium first">
                         <div className="avatar">
                             <img className="crown" src={Crown} alt={'Leader'} />
+                            <img src={`https://api.interpol.sd-lab.nl/${highestPoints.image_url}`} alt="first" />
                             <span>1</span>
                         </div>
                         <h1 className="teamName">{highestPoints.name}</h1>
@@ -55,6 +53,7 @@ const Leaderboard = ({
                 {secondHighestPoints && (
                     <div className="podium second">
                         <div className="avatar">
+                            <img src={`https://api.interpol.sd-lab.nl/${secondHighestPoints.image_url}`} alt="second" />
                             <span>2</span>
                         </div>
                         <h1 className="teamName">{secondHighestPoints.name}</h1>
