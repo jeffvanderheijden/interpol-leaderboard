@@ -39,6 +39,7 @@ const IndexPage = () => {
           combinedGroupsData.push(groupWithPoints);
         });
       });
+      console.log(combinedGroupsData);
       setTopThreeGroups(combinedGroupsData);
     }
     fetchData();
