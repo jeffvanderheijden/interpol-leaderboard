@@ -57,8 +57,8 @@
 }
 
 .leaderStage .podium .imgWrapper img {
-    width: 100%;
-    height: auto;
+    height: 100%;
+    width: auto;
 }
 
 .leaderStage .teamName,
