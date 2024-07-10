@@ -30,7 +30,7 @@ const IndexPage = () => {
     async function fetchData() {
       const groups = await getTopThreeGroups();
       const combinedGroupsData = groups.map((group) => {
-        return getGroupById(group.group_id).then((groupData) => {  
+         getGroupById(group.group_id).then((groupData) => {  
          return {
             ...groupData,
             points: group.total_points
