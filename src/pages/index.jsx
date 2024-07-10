@@ -36,6 +36,7 @@ const IndexPage = () => {
             ...groupData,
             points: group.total_points
           }
+          console.log('groupswithpoints', groupWithPoints);
           combinedGroupsData.push(groupWithPoints);
         });
       });
