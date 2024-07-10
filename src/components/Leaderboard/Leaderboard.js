@@ -21,6 +21,8 @@ const Leaderboard = ({
             setHighestPoints(highestPoints);
             setSecondHighestPoints(secondHighestPoints);
             setLowestPoints(lowestPoints);
+
+            console.log(highestPoints, secondHighestPoints, lowestPoints);
         }
     }, [topThreeGroups]);
 
