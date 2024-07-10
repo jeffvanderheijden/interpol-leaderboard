@@ -1,6 +1,8 @@
+const api = "https://api.jeffvanderheijden.nl/api";
+
 export const getGroups = async () => {
     try {
-        const response = await fetch("https://api.interpol.sd-lab.nl/api/groups");
+        const response = await fetch(`${api}/groups`);
         return await response.json();
     } catch (error) {
         console.error(error);
@@ -10,7 +12,7 @@ export const getGroups = async () => {
 
 export const getTopThreeGroups = async () => {
     try {
-        const response = await fetch("https://api.interpol.sd-lab.nl/api/top-three-groups");
+        const response = await fetch(`${api}/top-three-groups`);
         return await response.json();
     } catch (error) {
         console.error(error);
@@ -20,7 +22,7 @@ export const getTopThreeGroups = async () => {
 
 export const getGroupById = async (groupId) => {
     try {
-        const response = await fetch(`https://api.interpol.sd-lab.nl/api/group?id=${groupId}`);
+        const response = await fetch(`${api}/group?id=${groupId}`);
         return await response.json();
     } catch (error) {
         console.error(error);
