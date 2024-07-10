@@ -38,7 +38,6 @@ const IndexPage = () => {
           };
         })
       );
-      console.log(combinedGroupsData);
       setTopThreeGroups(combinedGroupsData);
     }
     fetchData();
@@ -49,8 +48,19 @@ const IndexPage = () => {
   useInterval(
     async () => {
       const groups = await getGroups();
+      const topGroups = await getTopThreeGroups();
+      const combinedGroupsData = await Promise.all(
+        topGroups.map(async (group) => {
+          const groupData = await getGroupById(group.group_id);
+          return {
+            ...groupData,
+            points: group.total_points
+          };
+        })
+      );
       setArcsData(data.slice(0, groups.length ? groups.length : 0));
       setConnectedAmount(groups.length ? groups.length : 0);
+      setTopThreeGroups(combinedGroupsData);
     }, 60000
   );
 
