@@ -29,14 +29,15 @@ const IndexPage = () => {
   useEffect(() => {
     async function fetchData() {
       const groups = await getTopThreeGroups();
-      const combinedGroupsData = groups.map((group) => {
-         getGroupById(group.group_id).then((groupData) => {  
-         return {
+      const combinedGroupsData = await Promise.all(
+        groups.map(async (group) => {
+          const groupData = await getGroupById(group.group_id);
+          return {
             ...groupData,
             points: group.total_points
-          }
-        });
-      });
+          };
+        })
+      );
       console.log(combinedGroupsData);
       setTopThreeGroups(combinedGroupsData);
     }
