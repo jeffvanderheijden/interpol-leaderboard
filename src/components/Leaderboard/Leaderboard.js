@@ -5,6 +5,7 @@ import "./Leaderboard.css"
 const Leaderboard = ({
     topThreeGroups
 }) => {
+    const api = "https://api.jeffvanderheijden.nl";
     const [highestPoints, setHighestPoints] = useState({});
     const [secondHighestPoints, setSecondHighestPoints] = useState({});
     const [lowestPoints, setLowestPoints] = useState({});
@@ -44,7 +45,7 @@ const Leaderboard = ({
                     <div className="podium third">
                         <div className="avatar">
                             <div className="imgWrapper">
-                                <img src={`https://api.interpol.sd-lab.nl/${lowestPoints.image_url}`} alt="third" />
+                                <img src={`${api}/${lowestPoints.image_url}`} alt="third" />
                             </div>
                             <span>3</span>
                         </div>
@@ -58,7 +59,7 @@ const Leaderboard = ({
                         <div className="avatar">
                             <img className="crown" src={Crown} alt={'Leader'} />
                             <div className="imgWrapper">
-                                <img src={`https://api.interpol.sd-lab.nl/${highestPoints.image_url}`} alt="first" />
+                                <img src={`${api}/${highestPoints.image_url}`} alt="first" />
                             </div>                            
                             <span>1</span>
                         </div>
@@ -71,7 +72,7 @@ const Leaderboard = ({
                     <div className="podium second">
                         <div className="avatar">
                             <div className="imgWrapper">
-                                <img src={`https://api.interpol.sd-lab.nl/${secondHighestPoints.image_url}`} alt="second" />
+                                <img src={`${api}/${secondHighestPoints.image_url}`} alt="second" />
                             </div>
                             <span>2</span>
                         </div>
