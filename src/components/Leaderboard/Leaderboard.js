@@ -5,7 +5,7 @@ import "./Leaderboard.css"
 const Leaderboard = ({
     topThreeGroups
 }) => {
-    const api = "https://api.jeffvanderheijden.nl";
+    const api = "https://api.interpol.sd-lab.nl";
     const [highestPoints, setHighestPoints] = useState({});
     const [secondHighestPoints, setSecondHighestPoints] = useState({});
     const [lowestPoints, setLowestPoints] = useState({});
