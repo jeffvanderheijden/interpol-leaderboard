@@ -1,4 +1,4 @@
-const api = "https://api.jeffvanderheijden.nl/api";
+const api = "https://api.interpol.sd-lab.nl/api";
 
 export const getGroups = async () => {
     try {
