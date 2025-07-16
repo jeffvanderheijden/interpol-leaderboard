@@ -12,6 +12,7 @@ const Leaderboard = ({
 
     useEffect(() => {
         if (topThreeGroups.length > 0) {
+            console.log("Top three groups:", topThreeGroups);
             // Sort the array based on the points in descending order
             let highestPoints = {};
             let secondHighestPoints = {};
